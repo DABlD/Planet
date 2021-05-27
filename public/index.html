@@ -9,7 +9,14 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="custom.css">
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -27,8 +34,76 @@
     <title>React App</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <!-- Navbar -->
+    <div class="top: 0">
+        <nav class="navbar navbar-expand-lg navbar-dark dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="https://newstorageforplanet.blob.core.windows.net/images/logo2.jpg" alt="logo" class="logo" width="80" height="43">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://planetwebsite.azurewebsites.net">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                Menu
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/bsolarsystem.html">Solar System</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/cmercury.html">Mercury</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/dvenus.html">Venus</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/eearth.html">Earth</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/fmars.html">Mars</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/gjupiter.html">Jupiter</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/hsaturn.html">Saturn</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/iuranus.html">Uranus</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/jneptune.html">Neptune</a>
+            </li>
+            <li>
+                <a href="http://planetwebsite.azurewebsites.net/kpluto.html">Pluto</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <div class="w3-main" style="margin-left:320px">
+      <div id="root"></div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +114,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="custom.js"></script>
+
   </body>
 </html>
