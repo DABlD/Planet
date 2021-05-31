@@ -11,12 +11,12 @@
     />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="http://localhost:3000/bootstrap.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link rel="stylesheet" href="http://localhost:3000/custom.css">
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -34,12 +34,65 @@
     <title>React App</title>
   </head>
   <body>
+    <!-- Navbar -->
+    <div class="top: 0">
+        <nav class="navbar navbar-expand-lg navbar-dark dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="https://newstorageforplanet.blob.core.windows.net/images/logo2.jpg" alt="logo" class="logo" width="180" height="43">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/faq">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <div class="w3-main">
       <div id="root"></div>
 
+      <footer class="bg-light text-center text-lg-start">
+         <div class="text-center p-3 footer-text">
+             <b>Site Owner: Sharlene </b>
+             <br />
+             <b>Site Reference: NASA Science</b>
+         </div>
+     </footer>
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src="bootstrap.js"></script>
-    <script src="custom.js"></script>
+    <script src="http://localhost:3000/bootstrap.js"></script>
+    <script src="http://localhost:3000/custom.js"></script>
 
   </body>
 </html>

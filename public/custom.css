@@ -193,3 +193,12 @@ tr:nth-child(odd) {
         margin-right: 0;
     }
 }
+
+.carousel{
+    margin-left: 15%;
+    width: 80%;
+}
+
+.container, .w3-row{
+    margin-left: 20%;
+}
