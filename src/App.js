@@ -7,6 +7,7 @@ import FAQ from './components/FAQ';
 import SolarSystem from './components/SolarSystem';
 import Planet from './components/Planet';
 import Create from './components/Create';
+import Edit from './components/Edit';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/solarSystem" component={SolarSystem}/>
           <Route path="/planet/:id" component={Planet}/>
           <Route path="/create" component={Create}/>
+          <Route path="/edit/:id" component={Edit}/>
         </Switch>
       </Router>
     </div>

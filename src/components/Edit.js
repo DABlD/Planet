@@ -3,9 +3,11 @@ import axios from 'axios'
 
 const URL = "http://localhost:51578/api/Planet";
 
-const Create = () => {
+const Edit = (data) => {
 
+	var id = data.match.params.id;
 	var pName = [];
+	var planet;
 
 	const [isLoading, setLoading] = useState(true);
 	const [planets, setPlanets] = useState();
@@ -23,6 +25,9 @@ const Create = () => {
 
 	for (var i = 0; i < planets.length; i++) {
 		pName.push({id: planets[i].id, name: planets[i].name});
+		if(id == planets[i].id){
+			planet = planets[i];
+		}
 	}
 
 	showSideBar(pName);
@@ -35,67 +40,67 @@ const Create = () => {
 		        
 		        <div className="form-group">
 		            <label className="control-label col-md-4" for="name">Name</label>
-		            <input className="form-control" type="text" name="name" id="name"></input>
+		            <input className="form-control" type="text" name="name" id="name" defaultValue={planet.name}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="description">Description</label>
-		            <input className="form-control" type="text" name="description" id="description"></input>
+		            <input className="form-control" type="text" name="description" id="description" defaultValue={planet.description}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="exploration">Exploration</label>
-		            <input className="form-control" type="text" name="exploration" id="exploration"></input>
+		            <input className="form-control" type="text" name="exploration" id="exploration" defaultValue={planet.exploration}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="sizeAndDistance">Size and Distance</label>
-		            <input className="form-control" type="text" name="sizeAndDistance" id="sizeAndDistance"></input>
+		            <input className="form-control" type="text" name="sizeAndDistance" id="sizeAndDistance" defaultValue={planet.sizeAndDistance}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="orbitAndRotation">Orbit and Rotation</label>
-		            <input className="form-control" type="text" name="orbitAndRotation" id="orbitAndRotation"></input>
+		            <input className="form-control" type="text" name="orbitAndRotation" id="orbitAndRotation" defaultValue={planet.orbitAndRotation}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="structure">Structure</label>
-		            <input className="form-control" type="text" name="structure" id="structure"></input>
+		            <input className="form-control" type="text" name="structure" id="structure" defaultValue={planet.structure}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="formation">Formation</label>
-		            <input className="form-control" type="text" name="formation" id="formation"></input>
+		            <input className="form-control" type="text" name="formation" id="formation" defaultValue={planet.formation}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="distanceFromTheSun">Distance from the Sun</label>
-		            <input className="form-control" type="text" name="distanceFromTheSun" id="distanceFromTheSun"></input>
+		            <input className="form-control" type="text" name="distanceFromTheSun" id="distanceFromTheSun" defaultValue={planet.distanceFromTheSun}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="periodOfRotation">Period of Rotation</label>
-		            <input className="form-control" type="text" name="periodOfRotation" id="periodOfRotation"></input>
+		            <input className="form-control" type="text" name="periodOfRotation" id="periodOfRotation" defaultValue={planet.periodOfRotation}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="periodOfRevolution">Period of Revolultion</label>
-		            <input className="form-control" type="text" name="periodOfRevolution" id="periodOfRevolution"></input>
+		            <input className="form-control" type="text" name="periodOfRevolution" id="periodOfRevolution" defaultValue={planet.periodOfRevolution}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="velocityOfRevolution">Velocity of Revolution</label>
-		            <input className="form-control" type="text" name="velocityOfRevolution" id="velocityOfRevolution"></input>
+		            <input className="form-control" type="text" name="velocityOfRevolution" id="velocityOfRevolution" defaultValue={planet.velocityOfRevolution}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="dimater">Diameter</label>
-		            <input className="form-control" type="text" name="dimater" id="dimater"></input>
+		            <input className="form-control" type="text" name="dimater" id="dimater" defaultValue={planet.dimater}></input>
 		        </div>
 
 		        <div className="form-group">
 		            <label className="control-label col-md-2" for="knownSatellites">Known Satellites</label>
-		            <input className="form-control" type="text" name="knownSatellites" id="knownSatellites"></input>
+		            <input className="form-control" type="text" name="knownSatellites" id="knownSatellites" defaultValue={planet.knownSatellites}></input>
 		        </div>
 
 		        <br />
@@ -110,6 +115,7 @@ const Create = () => {
 
 	function submitForm(){
 		var planet = {
+			id: id,
 			name: document.getElementById("name").value,
 			description: document.getElementById("description").value,
 			exploration: document.getElementById("exploration").value,
@@ -125,7 +131,7 @@ const Create = () => {
 			knownSatellites: document.getElementById("knownSatellites").value
 		};
 		
-		axios.post('http://localhost:51578/api/Planet', planet
+		axios.put('http://localhost:51578/api/Planet', planet
 		)
 			.then(function (response) {
 			console.log(response);
@@ -153,4 +159,4 @@ const Create = () => {
 	}
 }
 
-export default Create
+export default Edit

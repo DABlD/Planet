@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from 'react'
 import axios from 'axios'
-import parse from 'html-react-parser'
+// import parse from 'html-react-parser'
 
 const URL = "http://localhost:51578/api/Planet";
 
@@ -23,15 +23,6 @@ const Index = () => {
 	}
 
 	for (var i = 0; i < planets.length; i++) {
-		table += `<tr>
-			<th scope="col"><b> <a href="http://planetwebsite.azurewebsites.net/cmercury.html"> ${planets[i].name} </a></b></th>
-			<td><b>${planets[i].distanceFromTheSun}</b></td>
-			<td><b>${planets[i].periodOfRotation}</b></td>
-			<td><b>${planets[i].periodOfRevolution}</b></td>
-			<td><b>${planets[i].velocityOfRevolution} kM</b></td>
-			<td><b>${planets[i].dimater}</b></td>
-			<td><b>${planets[i].knownSatellites}</b></td>
-		</tr>`;
 		pName.push({id: planets[i].id, name: planets[i].name});
 	}
 
@@ -57,10 +48,29 @@ const Index = () => {
 			             <th scope="col" className="w3-text-teal"><b>Velocity of Revs per Second</b></th>
 			             <th scope="col" className="w3-text-teal"><b>Diameter (kM)</b></th>
 			             <th scope="col" className="w3-text-teal"><b>Number of Known Satellites</b></th>
+			             <th scope="col" className="w3-text-teal" style={{ width: "120px"}}><b>Actions</b></th>
 			         </tr>
 			     	</thead>
 			     	<tbody>
-			     		{ parse(table) }
+						{planets.map((planet, index) => (
+							<tr key={index}>
+								<th scope="col"><b> <a href={"http://localhost:3000/Planet/" + planet.id}> {planet.name} </a></b></th>
+								<td><b>{planet.distanceFromTheSun}</b></td>
+								<td><b>{planet.periodOfRotation}</b></td>
+								<td><b>{planet.periodOfRevolution}</b></td>
+								<td><b>{planet.velocityOfRevolution} kM</b></td>
+								<td><b>{planet.dimater}</b></td>
+								<td><b>{planet.knownSatellites}</b></td>
+								<td>
+								    <a href="#" className="btn btn-info" data-toggle="tooltip" title="Edit Planet" onClick={editzxc(planet.id)}>
+								        <span className="fa fa-pencil"></span>
+								    </a>
+								    <a href="#" className="btn btn-danger" data-toggle="tooltip" title="Delete Planet" onClick={deletezxc(planet.id)}>
+								        <span className="fa fa-trash"></span>
+								    </a>
+								</td>  
+							</tr>
+						))}
 			     	</tbody>
 			     </table>
 			 </div>
@@ -93,6 +103,26 @@ const Index = () => {
 			 </div>
 		</div>
 	)
+
+	function editzxc(id){
+		return () => {
+			window.location.href = "http://localhost:3000/edit/" + id;
+		}
+	}
+
+	function deletezxc(id){
+		return () => {
+			axios.delete(URL + "/" + id,
+			)
+				.then(function (response) {
+				console.log(response);
+				window.location.reload();
+			})
+				.catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
 
 	function showSideBar(planets){
 		var sidebar = `
